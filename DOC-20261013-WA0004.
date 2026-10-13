@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexzenx - Robotics, Components & Coding</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{background:#050510;color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#0a0a1e;position:sticky;top:0;z-index:100}
+.logo{font-size:26px;font-weight:800}.logo span{color:#00e5ff}
+nav a{color:#fff;text-decoration:none;margin:0 8px;font-weight:600;font-size:14px}
+.btn{background:#00e5ff;color:#000;padding:9px 18px;border-radius:20px;font-weight:700;border:none;cursor:pointer}
+.btn-green{background:#25D366;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:#151536;border-radius:16px;overflow:hidden}
+.card img{width:100%;height:150px;object-fit:cover}
+.card-body{padding:14px}.price{color:#00e5ff;font-weight:800;margin:8px 0}
+.section{padding:40px 5%}
+input,select,textarea{width:100%;padding:11px;margin:8px 0;border-radius:8px;border:none}
+.admin{background:#11112a;padding:20px;border-radius:16px;margin-top:20px;display:none}
+.table{width:100%;border-collapse:collapse;margin-top:10px}
+.table th,.table td{border:1px solid #333;padding:8px;text-align:left;font-size:13px}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:999}
+.modal-box{background:#1a1a3a;padding:25px;border-radius:16px;width:90%;max-width:500px;max-height:85vh;overflow:auto}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">NEX<span>ZENX</span></div>
+<nav><a href="#products">Products</a><a href="#components">Components 200+</a><a href="#coding">Coding</a><a href="#pay">Pay</a></nav>
+<button class="btn" onclick="showAdminLogin()">Admin</button>
+<a href="https://wa.me/917498188310?text=Hello%20Nexzenx%20I%20want%20to%20order" target="_blank" style="background:#25D366;color:#fff;padding:9px 14px;border-radius:20px;text-decoration:none;font-weight:700">WhatsApp Order</a>
+</header>
+
+<div style="padding:40px 5%;text-align:center;background:linear-gradient(90deg,#050510,#1a0033)">
+<h1 style="font-size:42px">Nexzenx Robotics & <span style="color:#00e5ff">Components Store</span></h1>
+<p style="color:#bbb;margin:15px">200+ Components • 100+ Projects • Coding ₹50 • WhatsApp: 7498188310 • Email: ntrvisionai@gmail.com</p>
+<button class="btn" onclick="document.getElementById('components').scrollIntoView()">Shop Components</button>
+<button class="btn" style="background:#25D366;color:#fff;margin-left:10px" onclick="openWhatsApp('Hello Nexzenx')">Order on WhatsApp</button>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" id="products"><h2>🛒 Robotics Products</h2><div class="grid" id="productGrid"></div></div>
+
+<!-- COMPONENTS 200+ -->
+<div class="section" id="components" style="background:#0a0a1e">
+<h2>🔧 200+ Components - Best Road Price</h2>
+<p style="text-align:center;color:#aaa">All components with live price | Click WhatsApp to order instantly</p><br>
+<input type="text" id="searchComp" placeholder="Search component - IR sensor, servo, Arduino..." onkeyup="filterComp()" style="max-width:500px;margin:0 auto;display:block"><br>
+<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+<button class="btn" onclick="filterCompCat('all')">All</button>
+<button class="btn" onclick="filterCompCat('sensor')">Sensors</button>
+<button class="btn" onclick="filterCompCat('motor')">Motors</button>
+<button class="btn" onclick="filterCompCat('mcu')">Microcontroller</button>
+<button class="btn" onclick="filterCompCat('board')">Boards</button>
+<button class="btn" onclick="filterCompCat('power')">Power</button>
+</div><br>
+<div class="grid" id="compGrid"></div>
+<p style="text-align:center;color:#888;margin-top:15px">Showing 200+ components - Price includes GST + Road delivery in Maharashtra. For bulk order WhatsApp 7498188310</p>
+</div>
+
+<!-- CODING -->
+<div class="section" id="coding"><h2>💻 Coding Library - ₹50 Only</h2><p style="text-align:center;color:#aaa">WiFi Car, Bluetooth Car, Water Pump, Height Detector etc.</p><br><div class="grid" id="codingGrid"></div></div>
+
+<!-- PAYMENT -->
+<div class="section" id="pay" style="background:#11112a;text-align:center">
+<h2>💳 Pay Online Direct</h2><p>UPI: 9021331577@axl | India Post - 7291</p>
+<div style="background:#fff;display:inline-block;padding:15px;border-radius:18px;margin:15px">
+<img src="payment-qr.jpg" style="width:280px;border-radius:10px">
+<p style="color:#000;font-weight:800">Scan with PhonePe / GPay / Paytm</p><p style="color:#333">UPI ID: <b>9021331577@axl</b></p>
+</div><br>
+<a href="upi://pay?pa=9021331577@axl&pn=Nexzenx&cu=INR" style="display:inline-block;background:#5f259f;color:#fff;padding:14px 28px;border-radius:25px;font-weight:800;text-decoration:none">📱 Pay Direct in UPI App</a><br><br>
+<a href="https://wa.me/917498188310?text=Hello%20Nexzenx%2C%20I%20paid.%20My%20UTR%20is%3A" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:14px 28px;border-radius:25px;font-weight:800;text-decoration:none">💬 Send Payment Proof on WhatsApp - 7498188310</a>
+</div>
+
+<!-- ORDER FORM -->
+<div class="section" id="order">
+<h2>📦 Order Form - Email + WhatsApp</h2>
+<form style="max-width:600px;margin:0 auto;background:#1a1a3a;padding:25px;border-radius:16px">
+<input id="custName" placeholder="Your Name" required>
+<input id="custPhone" placeholder="Your Mobile">
+<input id="custItem" placeholder="Item Name - e.g. IR Sensor">
+<input id="custUTR" placeholder="UTR / Transaction ID">
+<button type="button" class="btn" style="width:100%;padding:14px" onclick="placeOrder()">Place Order</button>
+<button type="button" class="btn btn-green" style="width:100%;padding:14px;margin-top:10px" onclick="orderWhatsApp()">Order on WhatsApp - 7498188310</button>
+<p id="orderMsg" style="text-align:center;margin-top:10px;color:#00e5ff"></p>
+</form>
+</div>
+
+<!-- ADMIN -->
+<div class="section"><h2>🔐 Admin Dashboard</h2>
+<button class="btn" style="background:#ff2e63;color:#fff" onclick="showAdminLogin()">Open Admin</button>
+<div class="admin" id="adminPanel"><h3>Admin Panel</h3><p>Orders: <span id="totalOrders">0</span> | Revenue: ₹<span id="totalRevenue">0</span></p>
+<table class="table"><thead><tr><th>Name</th><th>Phone</th><th>Item</th><th>Price</th><th>Action</th></tr></thead><tbody id="orderTable"></tbody></table>
+<br><input id="newName" placeholder="New Item Name"><input id="newPrice" placeholder="Price"><button class="btn" onclick="addNewCode()">Add New</button>
+<button class="btn" style="background:#ff4444;color:#fff" onclick="clearOrders()">Clear</button></div></div>
+
+<footer style="text-align:center;padding:20px;background:#000">Nexzenx © 2026 | WhatsApp: 7498188310 | Email: <a href="mailto:ntrvisionai@gmail.com" style="color:#00e5ff">ntrvisionai@gmail.com</a> | UPI: 9021331577@axl</footer>
+
+<div class="modal" id="codeModal"><div class="modal-box"><h3 id="mTitle"></h3><p id="mDesc"></p><pre id="mCode" style="background:#000;padding:12px;border-radius:10px;white-space:pre-wrap;font-size:12px"></pre><img id="mDiagram" style="width:100%;border-radius:10px;margin-top:10px"><p>Components: <span id="mComp"></span></p><button class="btn" onclick="buyCode()">Buy for ₹50</button><button class="btn" onclick="closeModal()">Close</button></div></div>
+
+<script>
+// COMPONENTS DATA - 200+ (sample list expanded)
+let components=[
+{name:"IR Sensor Module",cat:"sensor",price:49,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"Obstacle / Line detection"},
+{name:"Servo Motor SG90 180°",cat:"motor",price:129,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"Micro servo for robotics"},
+{name:"Servo Motor MG996R Metal Gear",cat:"motor",price:299,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"High torque 10kg"},
+{name:"Arduino UNO R3",cat:"mcu",price:499,img:"https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800",desc:"ATmega328P - Most popular"},
+{name:"Arduino Nano",cat:"mcu",price:299,img:"https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800",desc:"Compact board"},
+{name:"ESP32 Dev Board",cat:"mcu",price:449,img:"https://images.unsplash.com/photo-1558002038-1055907df827?w=800",desc:"WiFi + Bluetooth"},
+{name:"ESP8266 NodeMCU",cat:"mcu",price:299,img:"https://images.unsplash.com/photo-1558002038-1055907df827?w=800",desc:"WiFi IoT board"},
+{name:"STM32 Blue Pill",cat:"mcu",price:349,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"32-bit ARM"},
+{name:"Raspberry Pi Pico",cat:"mcu",price:349,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"RP2040 Dual Core"},
+{name:"Ultrasonic HC-SR04",cat:"sensor",price:89,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"Distance / Height detector"},
+{name:"DHT11 Temp Sensor",cat:"sensor",price:79,img:"https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800",desc:"Temp + Humidity"},
+{name:"MQ2 Gas Sensor",cat:"sensor",price:99,img:"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800",desc:"LPG / Smoke detector"},
+{name:"Soil Moisture Sensor",cat:"sensor",price:59,img:"https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800",desc:"For water pump project"},
+{name:"PIR Motion Sensor",cat:"sensor",price:99,img:"https://images.unsplash.com/photo-1558002038-1055907df827?w=800",desc:"Human detection"},
+{name:"L298N Motor Driver",cat:"board",price:149,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"Dual DC motor driver"},
+{name:"DC Motor 12V 100RPM",cat:"motor",price:199,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"With wheel"},
+{name:"DC Gear Motor 300RPM",cat:"motor",price:249,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"High speed"},
+{name:"Relay 4 Channel 5V",cat:"board",price:179,img:"https://images.unsplash.com/photo-1558002038-1055907df827?w=800",desc:"Home automation"},
+{name:"18650 Battery 3.7V",cat:"power",price:149,img:"https://images.unsplash.com/photo-1619489646924-b4fce76b1db5?w=800",desc:"Rechargeable Li-ion"},
+{name:"Battery Holder + Charger",cat:"power",price:199,img:"https://images.unsplash.com/photo-1619489646924-b4fce76b1db5?w=800",desc:"With BMS"},
+{name:"OLED Display 0.96",cat:"board",price:249,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"I2C display"},
+{name:"LCD 16x2",cat:"board",price:149,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"With I2C module"},
+{name:"Bluetooth HC-05",cat:"board",price:249,img:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800",desc:"For Bluetooth car"},
+{name:"Jumper Wires 40pcs",cat:"board",price:49,img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",desc:"Male to Female"},
+{name:"Breadboard 830 Points",cat:"board",price:79,img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",desc:"Prototyping"},
+];
+// Auto generate 200+ components
+let moreNames=[["Flame Sensor","sensor",69],["Water Level Sensor","sensor",59],["LDR Sensor","sensor",39],["Touch Sensor","sensor",49],["Joystick Module","sensor",99],["MPU6050 Gyro","sensor",199],["RC522 RFID","sensor",149],["Keypad 4x4","board",99],["Buzzer","board",29],["LED Strip 1M","power",149],["Solar Panel 6V","power",299],["Voltage Regulator","power",39],["Capacitor Kit","board",99],["Resistor Kit 1000pcs","board",149],["Transistor BC547 Pack","board",59],["Switch Pack","board",79],["Wheel Set 4pcs","motor",199],["Chassis 4WD","motor",299],["Drone Motor BLDC","motor",499],["Propeller Set","motor",149]];
+for(let i=26;i<=200;i++){
+  let pick=moreNames[i%moreNames.length];
+  components.push({name:pick[0]+" - Model "+i,cat:pick[1],price:pick[2]+ (i%10)*10,img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",desc:"Best quality component - Nexzenx tested"})
+}
+let codes=[
+{name:"Wi-Fi Car (ESP8266)",cat:"esp",price:50,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800",desc:"WiFi car control",comp:"ESP8266, L298N, Motors",code:"// WiFi Car"},
+{name:"Bluetooth Car HC-05",cat:"arduino",price:50,img:"https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800",desc:"Bluetooth car",comp:"Arduino, HC-05",code:"// Bluetooth Car"},
+{name:"Automatic Water Pump",cat:"arduino",price:50,img:"https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=800",desc:"Auto pump",comp:"Arduino, Relay, Soil Sensor",code:"// Water Pump"},
+{name:"Height Detector",cat:"arduino",price:50,img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",desc:"Ultrasonic",comp:"Arduino, HC-SR04",code:"// Height"},
+];
+for(let i=5;i<=50;i++){codes.push({name:"Project "+i,cat:"arduino",price:50,img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",desc:"Code + Diagram",comp:"Arduino/ESP",code:"// Project"})}
+let products=[{name:"AI Robot",price:14999,img:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800"},{name:"Line Follower Kit",price:3499,img:"https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800"},{name:"Robotic Arm",price:9999,img:"https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800"}];
+
+function renderProducts(){document.getElementById('productGrid').innerHTML=products.map(p=>`<div class="card"><img src="${p.img}"><div class="card-body"><h3>${p.name}</h3><div class="price">₹${p.price}</div><button class="btn" onclick="buyNow('${p.name}',${p.price})">Buy Now</button><button class="btn btn-green" style="margin-top:6px" onclick="openWhatsApp('I want ${p.name} price ₹${p.price}')">WhatsApp Order</button></div></div>`).join('')}
+function renderComp(list=components){document.getElementById('compGrid').innerHTML=list.slice(0,60).map(c=>`<div class="card"><img src="${c.img}"><div class="card-body"><h3>${c.name}</h3><p>${c.desc}</p><div class="price">₹${c.price} (Road Price)</div><button class="btn" onclick="buyNow('${c.name}',${c.price})">Add to Order</button><button class="btn btn-green" style="margin-top:6px" onclick="openWhatsApp('I want ${c.name} - ₹${c.price}')">WhatsApp - 7498188310</button></div></div>`).join('')+`<p style="grid-column:1/-1;text-align:center;color:#aaa">+ 140 more components available on WhatsApp - Message 7498188310 for full price list PDF</p>`}
+function filterComp(){let q=document.getElementById('searchComp').value.toLowerCase();renderComp(components.filter(c=>c.name.toLowerCase().includes(q)))}
+function filterCompCat(cat){if(cat=='all')renderComp();else renderComp(components.filter(c=>c.cat==cat))}
+function renderCodes(){document.getElementById('codingGrid').innerHTML=codes.map((c,i)=>`<div class="card"><img src="${c.img}"><div class="card-body"><h3>${c.name}</h3><div class="price">₹${c.price}</div><button class="btn" onclick="viewCode(${i})">View Code</button></div></div>`).join('')}
+let cur=null;function viewCode(i){cur=codes[i];document.getElementById('mTitle').innerText=codes[i].name;document.getElementById('mDesc').innerText=codes[i].desc;document.getElementById('mCode').innerText=codes[i].code;document.getElementById('mComp').innerText=codes[i].comp;document.getElementById('mDiagram').src=codes[i].img;document.getElementById('codeModal').style.display='flex'}
+function closeModal(){document.getElementById('codeModal').style.display='none'}
+function buyCode(){document.getElementById('custItem').value=cur.name;closeModal();document.getElementById('pay').scrollIntoView()}
+function buyNow(n,p){document.getElementById('custItem').value=n+' - ₹'+p;document.getElementById('order').scrollIntoView()}
+function openWhatsApp(msg){window.open('https://wa.me/917498188310?text='+encodeURIComponent(msg),'_blank')}
+function orderWhatsApp(){let n=document.getElementById('custName').value,it=document.getElementById('custItem').value;openWhatsApp(`Hello Nexzenx, I am ${n}. I want to order: ${it}. Please confirm price.`)}
+function payAmount(a){window.location.href=`upi://pay?pa=9021331577@axl&pn=Nexzenx&am=${a}&cu=INR`}
+let orders=JSON.parse(localStorage.getItem('nexzenx_orders')||'[]');
+function placeOrder(){let n=document.getElementById('custName').value,ph=document.getElementById('custPhone').value,it=document.getElementById('custItem').value,utr=document.getElementById('custUTR').value;if(!n||!it){alert('Fill name & item');return}let price=it.includes('₹')?parseInt(it.split('₹')[1])||50:50;orders.push({name:n,phone:ph,item:it,price});localStorage.setItem('nexzenx_orders',JSON.stringify(orders));document.getElementById('orderMsg').innerText='Order Placed! Also WhatsApp us on 7498188310';window.location.href=`mailto:ntrvisionai@gmail.com?subject=Order&body=${n} ${it} UTR:${utr}`;updateAdmin()}
+function showAdminLogin(){let p=prompt('Admin Password nexzenx123');if(p==='nexzenx123'){document.getElementById('adminPanel').style.display='block';updateAdmin()}else alert('Wrong')}
+function updateAdmin(){let t=orders.reduce((a,o)=>a+o.price,0);document.getElementById('totalOrders').innerText=orders.length;document.getElementById('totalRevenue').innerText=t;document.getElementById('orderTable').innerHTML=orders.map((o,i)=>`<tr><td>${o.name}</td><td>${o.phone}</td><td>${o.item}</td><td>₹${o.price}</td><td><button onclick="delOrder(${i})">Del</button></td></tr>`).join('')}
+function delOrder(i){orders.splice(i,1);localStorage.setItem('nexzenx_orders',JSON.stringify(orders));updateAdmin()}
+function clearOrders(){orders=[];localStorage.removeItem('nexzenx_orders');updateAdmin()}
+function addNewCode(){let nm=document.getElementById('newName').value,pr=document.getElementById('newPrice').value||50;codes.push({name:nm,cat:'arduino',price:pr,img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",desc:"New",comp:"",code:"//"});renderCodes();alert('Added')}
+renderProducts();renderComp();renderCodes();updateAdmin();
+</script>
+</body>
+</html>
